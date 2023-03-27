@@ -12,29 +12,22 @@ y_axis = st.selectbox("Select the data for the Y-axis",
 
 st.subheader(f"{x_axis} and {y_axis}")
 
-
 # this function extracts data from the csv file
-def extract():
-    df = pd.read_csv("happy.csv")
-    return df["happiness"], df["gdp"], df["generosity"]
-
-
-happy, gdp, generosity = extract()
+df = pd.read_csv("happy.csv")
 match x_axis:
     case "GDP":
-        result_x = gdp
+        result_x = df["gdp"]
     case "Happiness":
-        result_x = happy
+        result_x = df["happiness"]
     case "Generosity":
-        result_x = generosity
+        result_x = df["generosity"]
 match y_axis:
     case "GDP":
-        result_y = gdp
+        result_y = df["gdp"]
     case "Happiness":
-        result_y = happy
+        result_y = df["happiness"]
     case "Generosity":
-        result_y = generosity
-
+        result_y = df["generosity"]
 
 # displays the graph
 figure = px.scatter(x=result_x, y=result_y,
